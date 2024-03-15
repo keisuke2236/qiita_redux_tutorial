@@ -1,7 +1,9 @@
+import AddTodo from '../containers/AddTodo'
+
 function App() {
   return (
     <div>
-      Hello World
+      <AddTodo />
     </div>
   );
 }
