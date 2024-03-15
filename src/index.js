@@ -12,15 +12,20 @@ import todoReducer from './reducers';
 // todoReducer が管理する store が作成され、todo の state（状態）を管理できるようになる
 // そもそも Reducer は state を管理するものなので、その認識があれば以下の直訳通り読んで理解ができる
 // 直訳「ストアを作ります、TodoRecucerが管理します」
-const store = createStore(todoReducer);
+const store = createStore(
+  todoReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+// これは単に Chrome拡張機能用：window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
-
 
 /* note 
   複数の Reducer を使う場合は、combineReducers を使う
