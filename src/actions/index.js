@@ -12,6 +12,11 @@ export const toggleTodo = (id) => ({
   id
 })
 
+export const deleteTodo = (id) => ({
+  type: 'DELETE_TODO',
+  id
+})
+
 /* note
   Actionには必ず type が存在する
   ユーザーの操作で いずれかの Action を Dispatch し

@@ -16,7 +16,7 @@ const todosReducer = (state = [], action) => {
           : todo
       )
     default:
-      return state
+      return state;
   }
 }
 

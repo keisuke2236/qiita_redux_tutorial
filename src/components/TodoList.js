@@ -1,16 +1,10 @@
 import PropTypes from 'prop-types'
-import Todo from './Todo'
+import Todo from './Todo.js'
 
-const TodoList = ({ todos, toggleTodo }) => (
+const TodoList = ({ todos, toggleTodo, deleteTodo }) => (
   <ul>
     {todos.map(todo =>
-      // ここで Todo コンポーネントを描画します。
-      // onClick には、toggleTodo（引数は todo の id）を渡します。
-      <Todo
-        key={todo.id}
-        {...todo}
-        onClick={() => toggleTodo(todo.id)}
-      />
+      <Todo key={todo.id} {...todo} onClick={() => toggleTodo(todo.id)} />
     )}
   </ul>
 )

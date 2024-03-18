@@ -15,9 +15,7 @@ const AddTodo = ({ dispatch }) => {
         input.value = '' // 投稿後にtextboxを空にする
       }}>
         <input ref={node => input = node} />
-        <button type="submit">
-          追加
-        </button>
+        <button type="submit">追加</button>
       </form>
     </div>
   )
