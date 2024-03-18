@@ -1,3 +1,7 @@
+// リデューサー、状態（ステート）の管理者
+// store の中に存在して、リデューサー毎にステート（状態データ）を持っている
+// Action毎にその ステート を更新する処理も持つ
+
 const todosReducer = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TODO':
@@ -15,6 +19,8 @@ const todosReducer = (state = [], action) => {
           ? { ...todo, completed: !todo.completed }
           : todo
       )
+    case 'DELETE_TODO':
+      return state.filter(todo => todo.id !== action.id)
     default:
       return state;
   }

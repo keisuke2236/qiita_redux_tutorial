@@ -1,7 +1,10 @@
+// 追加フォーム
+// connect()関数を通じてReduxのディスパッチをpropsとして受け取る
+// これをコンテナコンポーネントと呼ぶ
+
 import React from "react"
-// connect は dispatch を利用できるようにするためのもの
 import { connect } from "react-redux"
-import { addTodo } from "../actions"
+import { addTodo } from "../actions/todoActions"
 
 const AddTodo = ({ dispatch }) => {
   let input

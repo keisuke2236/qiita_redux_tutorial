@@ -1,4 +1,7 @@
 // Action の定義
+// Action を起こすために必要な変数を受け渡す票の作成
+// Actionといいつつ、ただの関数を返しているだけ
+
 let nextTodoId = 0;
 
 export const addTodo = (text) => ({
