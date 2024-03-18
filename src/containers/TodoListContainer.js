@@ -20,8 +20,18 @@ const mapDispatchToProps = dispatch => ({
 
 // ReactのコンポーネントをReduxストアに「接続（connect）」する
 // connect すると、dispatch と state を受け取れるようになる
-export default connect(mapStateToProps, mapDispatchToProps)(TodoList)
+const WrappedComponent = connect(mapStateToProps, mapDispatchToProps);
+export default WrappedComponent(TodoList)
 
+// 高階関数
+// connect(mapStateToProps, mapDispatchToProps) の戻り値が関数でその引数が TodoList
+
+// const WrappedComponent = (Component) => {
+//   const todos_state = 'from state';
+//   return (
+//     <Component todos_state={todos_state} />
+//   )
+// }
 
 /*
 connect関数はreact-reduxライブラリが提供する関数

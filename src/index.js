@@ -10,11 +10,15 @@ import { Provider } from 'react-redux'; // 普通に React で使う変数共有
 // Redux関係の import
 import { combineReducers, createStore } from 'redux'; // redux が提供している createStore で store を作れる（Reactは関係がない）
 import todoReducer from './reducers/todoReducer'; // todoのステートを内部で管理する リデューサー
+import indexReducer from './reducers/indexReducer';
+import textReducer from './reducers/textReducer';
 
 // 複数の状態を管理したい場合は1個のルートリデューサーを作成して、それを createStore に渡す
+// どんなアクションでも全てのリデューサーに渡される、そのため、全てのリデューサーが全てのアクションに反応する
 const rootReducer = combineReducers({
-  todos: todoReducer
-  // hoges: hogeReducer,
+  todos: todoReducer,
+  index: indexReducer,
+  text: textReducer
 })
 
 // createStoreでストアを作成、引数にリデューサーを渡すと、ストア内に各リデューサーが管理する部分ステートが形成される

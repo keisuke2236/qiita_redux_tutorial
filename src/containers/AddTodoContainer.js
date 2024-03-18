@@ -5,23 +5,32 @@
 import React from "react"
 import { connect } from "react-redux"
 import { addTodo } from "../actions/todoActions"
+import { changeText } from "../actions/textActions"
 
-const AddTodo = ({ dispatch }) => {
-  let input
+// stateをシンプルな props に書き換える
+const mapStateToProps = state => ({
+  index: state.index,
+  text: state.text
+})
 
+const mapDispatchToProps = dispatch => ({
+  addTodo: (text, index) => dispatch(addTodo(text, index)),
+  changeText: text => dispatch(changeText(text))
+})
+
+
+const AddTodo = ({ index, text, addTodo, changeText }) => {
   return (
     <div>
       <form onSubmit={e => {
         e.preventDefault()
-        if (!input.value.trim()) { return } // null なら不実行
-        dispatch(addTodo(input.value))
-        input.value = '' // 投稿後にtextboxを空にする
+        addTodo(text, index)
       }}>
-        <input ref={node => input = node} />
+        <input value={text} onChange={(e) => changeText(e.target.value)} />
         <button type="submit">追加</button>
       </form>
     </div>
   )
 }
 
-export default connect()(AddTodo)
+export default connect(mapStateToProps, mapDispatchToProps)(AddTodo)
